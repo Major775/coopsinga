@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>SCINPA - Société Coopérative Ivoirienne de Négoce des Produits Agricoles</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="SCINPA - Coopérative agricole leader en Côte d'Ivoire pour la production et la commercialisation de cacao et café de qualité" />
+<meta name="author" content="SCINPA" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<style>
+/* ===== DESIGN SYSTEM ===== */
+:root {
+  --green-900: #0F2417;
+  --green-800: #14301E;
+  --green-700: #1B4028;
+  --green-600: #245A34;
+  --green-500: #2F7A44;
+  --green-400: #4FA468;
+  --gold-500: #D4A24C;
+  --gold-400: #E4B968;
+  --gold-300: #F0D08A;
+  --beige-50: #FBF7EF;
+  --beige-100: #F5EEE0;
+  --beige-200: #EADFC8;
+  --ink-900: #14201A;
+  --ink-700: #2A3A30;
+  --ink-500: #5A6B60;
+  --white: #FFFFFF;
+
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 2px 10px rgba(15, 36, 23, 0.06);
+  --shadow-md: 0 12px 30px rgba(15, 36, 23, 0.10);
+  --shadow-lg: 0 24px 60px rgba(15, 36, 23, 0.16);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition: all 0.45s var(--ease);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+  background-color: var(--beige-50);
+  color: var(--ink-700);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, .display-font {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--green-800);
+  letter-spacing: -0.01em;
+}
+
+a { text-decoration: none; }
+img { max-width: 100%; height: auto; }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--gold-500);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ===== TOP BAR ===== */
+.top-bar {
+  background: var(--green-900);
+  color: rgba(255,255,255,0.85);
+  font-size: 13px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.top-bar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.top-bar .top-contact { display: flex; gap: 22px; flex-wrap: wrap; }
+.top-bar .top-contact a {
+  color: rgba(255,255,255,0.85);
+  transition: var(--transition);
+}
+.top-bar .top-contact a:hover { color: var(--gold-400); }
+.top-bar .top-contact i { color: var(--gold-400); margin-right: 7px; }
+
+.social-icons { display: flex; gap: 10px; align-items: center; }
+.social-icons a {
+  color: rgba(255,255,255,0.85);
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.06);
+  transition: var(--transition);
+  font-size: 13px;
+}
+.social-icons a:hover {
+  background: var(--gold-500);
+  color: var(--green-900);
+  transform: translateY(-3px);
+}
+
+/* ===== HEADER ===== */
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(251, 247, 239, 0.92);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid rgba(15, 36, 23, 0.06);
+  padding: 14px 0;
+  transition: var(--transition);
+}
+.main-header.scrolled {
+  padding: 8px 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo img {
+  max-height: 62px;
+  width: auto;
+  border-radius: 14px;
+  background: var(--white);
+  padding: 6px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+.logo img:hover { transform: scale(1.04); }
+
+.nav-menu { display: flex; justify-content: flex-end; align-items: center; }
+.nav-menu ul {
+  display: flex; list-style: none; gap: 6px; margin: 0; padding: 0;
+  align-items: center;
+}
+.nav-menu ul li a {
+  color: var(--green-800);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 16px;
+  border-radius: var(--radius-pill);
+  transition: var(--transition);
+  white-space: nowrap;
+  display: inline-block;
+  cursor: pointer;
+}
+.nav-menu ul li a:hover {
+  color: var(--green-600);
+  background: rgba(47, 122, 68, 0.08);
+}
+.nav-menu ul li a.active {
+  color: var(--white);
+  background: var(--green-700);
+}
+
+.nav-cta {
+  margin-left: 10px;
+  background: var(--gold-500) !important;
+  color: var(--green-900) !important;
+  font-weight: 700 !important;
+}
+.nav-cta:hover {
+  background: var(--gold-400) !important;
+  color: var(--green-900) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(212, 162, 76, 0.35);
+}
+.nav-cta.active {
+  background: var(--gold-400) !important;
+  color: var(--green-900) !important;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: var(--green-700);
+  border: none;
+  color: var(--white);
+  font-size: 1.15rem;
+  cursor: pointer;
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+.mobile-menu-btn:hover { background: var(--green-600); }
+
+/* ===== TICKER ===== */
+.news-ticker {
+  background: linear-gradient(90deg, var(--green-800), var(--green-600));
+  color: var(--white);
+  padding: 11px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 14px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.news-ticker::before {
+  background: var(--gold-500);
+  color: var(--green-900);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 1px;
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  margin-left: 24px;
+  margin-right: 16px;
+  flex-shrink: 0;
+  z-index: 2;
+}
+.ticker-content {
+  display: inline-block;
+  animation: ticker 28s linear infinite;
+  padding-left: 20px;
+}
+.ticker-content i { color: var(--gold-400); margin-right: 8px; }
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ===== SYSTÈME DE PAGES (TABS) ===== */
+.page {
+  display: none;
+  animation: pageFadeIn 0.6s var(--ease);
+}
+.page.active {
+  display: block;
+}
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== HERO ===== */
+.hero-carousel { position: relative; overflow: hidden; }
+.carousel-item {
+  height: 88vh;
+  min-height: 580px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.carousel-item::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(15,36,23,0.35) 0%, rgba(15,36,23,0.55) 60%, rgba(15,36,23,0.85) 100%),
+    linear-gradient(90deg, rgba(15,36,23,0.55) 0%, rgba(15,36,23,0.05) 60%);
+}
+.carousel-caption {
+  bottom: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: left;
+  left: 8%;
+  right: 8%;
+  max-width: 780px;
+  z-index: 10;
+}
+.carousel-caption .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(8px);
+  color: var(--gold-300);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 22px;
+}
+.carousel-caption h2 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 20px;
+  line-height: 1.1;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.35);
+}
+.carousel-caption h2 span {
+  color: var(--gold-400);
+  font-style: italic;
+}
+.carousel-caption p {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  color: rgba(255,255,255,0.92);
+  margin-bottom: 34px;
+  max-width: 560px;
+  font-weight: 400;
+}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.carousel-indicators [data-bs-target] {
+  width: 32px; height: 4px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.4);
+  border: none;
+  opacity: 1;
+  transition: var(--transition);
+}
+.carousel-indicators .active {
+  background: var(--gold-400);
+  width: 48px;
+}
+.carousel-control-prev, .carousel-control-next { width: 60px; opacity: 0.7; }
+.carousel-control-prev:hover, .carousel-control-next:hover { opacity: 1; }
+
+/* ===== BUTTONS ===== */
+.btn-theme {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: var(--gold-500);
+  color: var(--green-900);
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  transition: var(--transition);
+  border: 2px solid var(--gold-500);
+  cursor: pointer;
+}
+.btn-theme:hover {
+  background: var(--gold-400);
+  border-color: var(--gold-400);
+  color: var(--green-900);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(212, 162, 76, 0.35);
+}
+.btn-outline {
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.6);
+  color: var(--white);
+}
+.btn-outline:hover {
+  background: var(--white);
+  border-color: var(--white);
+  color: var(--green-900);
+}
+
+/* ===== SECTIONS ===== */
+section { position: relative; }
+.section-pad { padding: 100px 0; }
+
+.section-title { text-align: center; margin-bottom: 60px; }
+.section-title .eyebrow {
+  display: inline-block;
+  color: var(--gold-500);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.section-title h2 {
+  font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+.section-title .title-divider {
+  width: 70px;
+  height: 3px;
+  background: var(--gold-500);
+  margin: 0 auto 18px;
+  border-radius: 2px;
+}
+.section-title p {
+  color: var(--ink-500);
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 1.02rem;
+}
+.section-title.text-white h2,
+.section-title.text-white p { color: var(--white); }
+.section-title.text-white .title-divider { background: var(--gold-400); }
+
+/* ===== STATS ===== */
+.stats-section {
+  padding: 0;
+  margin-top: -70px;
+  position: relative;
+  z-index: 20;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  border: 1px solid rgba(15,36,23,0.05);
+}
+.stat-card {
+  padding: 40px 24px;
+  text-align: center;
+  position: relative;
+  transition: var(--transition);
+}
+.stat-card:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 20%; bottom: 20%;
+  width: 1px;
+  background: rgba(15,36,23,0.08);
+}
+.stat-card:hover { background: var(--beige-50); }
+.stat-icon {
+  width: 58px; height: 58px;
+  margin: 0 auto 18px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--green-500), var(--green-700));
+  color: var(--gold-300);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: 0 8px 20px rgba(47,122,68,0.25);
+}
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: var(--green-700);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--ink-500);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ===== ABOUT ===== */
+.about-section { background: var(--white); }
+.about-content h3 {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  color: var(--green-700);
+  margin-bottom: 22px;
+  line-height: 1.25;
+}
+.about-content p {
+  color: var(--ink-500);
+  font-size: 1.02rem;
+  margin-bottom: 22px;
+}
+.feature-list { list-style: none; padding: 0; margin: 26px 0; }
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-weight: 500;
+  color: var(--ink-700);
+}
+.feature-list li i {
+  color: var(--green-500);
+  background: rgba(47,122,68,0.1);
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.about-image { position: relative; }
+.about-image img {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  object-fit: cover;
+}
+.about-image .badge-float {
+  position: absolute;
+  bottom: -20px; left: -20px;
+  background: var(--green-700);
+  color: var(--white);
+  padding: 22px 28px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  display: flex; align-items: center; gap: 14px;
+}
+.about-image .badge-float i { font-size: 2rem; color: var(--gold-400); }
+.about-image .badge-float strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+.about-image .badge-float small {
+  font-size: 0.78rem;
+  opacity: 0.85;
+  letter-spacing: 0.5px;
+}
+
+/* ===== PRODUCTS ===== */
+.products-section { background: var(--beige-50); }
+.product-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(15,36,23,0.04);
+}
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+.product-image {
+  height: 280px;
+  overflow: hidden;
+  position: relative;
+}
+.product-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+.product-card:hover .product-image img { transform: scale(1.08); }
+.product-image::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(15,36,23,0.35) 100%);
+}
+.product-tag {
+  position: absolute;
+  top: 18px; left: 18px;
+  background: rgba(255,255,255,0.95);
+  color: var(--green-700);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  z-index: 2;
+}
+.product-content {
+  padding: 32px;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.product-content h3 { color: var(--green-700); margin-bottom: 14px; font-size: 1.45rem; }
+.product-content p { color: var(--ink-500); margin-bottom: 24px; flex: 1; }
+.product-content .btn-theme {
+  align-self: center;
+  background: transparent;
+  color: var(--green-700);
+  border-color: var(--green-700);
+  padding: 11px 26px;
+}
+.product-content .btn-theme:hover {
+  background: var(--green-700);
+  color: var(--white);
+  border-color: var(--green-700);
+}
+
+/* ===== SOCIAL ===== */
+.social-section {
+  background:
+    radial-gradient(circle at 10% 20%, rgba(79,164,104,0.18), transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(212,162,76,0.12), transparent 50%),
+    linear-gradient(135deg, var(--green-800) 0%, var(--green-600) 100%);
+  color: var(--white);
+}
+.social-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  border-radius: var(--radius-lg);
+  padding: 40px 30px;
+  text-align: center;
+  transition: var(--transition);
+  height: 100%;
+}
+.social-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(212,162,76,0.4);
+}
+.social-icon {
+  width: 72px; height: 72px;
+  margin: 0 auto 22px;
+  border-radius: 20px;
+  background: rgba(212,162,76,0.15);
+  border: 1px solid rgba(212,162,76,0.3);
+  color: var(--gold-400);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.7rem;
+}
+.social-card h4 { color: var(--white); font-size: 1.3rem; margin-bottom: 14px; }
+.social-card p { color: rgba(255,255,255,0.78); font-size: 0.95rem; margin: 0; }
+
+/* ===== PARTNERS ===== */
+.partners-section { background: var(--white); }
+.partner-logo {
+  text-align: center;
+  padding: 28px 16px;
+  background: var(--beige-50);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(15,36,23,0.05);
+  transition: var(--transition);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.partner-logo:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(212,162,76,0.4);
+}
+.partner-logo img {
+  max-height: 70px;
+  width: auto;
+  filter: grayscale(1) opacity(0.7);
+  transition: var(--transition);
+}
+.partner-logo:hover img { filter: grayscale(0) opacity(1); }
+
+/* ===== EVENTS ===== */
+.events-section { background: var(--beige-50); }
+.event-card {
+  display: flex;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  height: 100%;
+  border: 1px solid rgba(15,36,23,0.04);
+}
+.event-card:hover {
+  transform: translateX(6px);
+  box-shadow: var(--shadow-md);
+}
+.event-date {
+  background: linear-gradient(160deg, var(--green-700), var(--green-500));
+  color: var(--white);
+  padding: 26px 20px;
+  text-align: center;
+  min-width: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.event-date .day {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--gold-400);
+}
+.event-date .month {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.event-date .year { font-size: 0.72rem; opacity: 0.7; margin-top: 2px; }
+.event-content { padding: 26px; flex: 1; }
+.event-content h4 { color: var(--green-700); margin-bottom: 12px; font-size: 1.2rem; }
+.event-content p { color: var(--ink-500); font-size: 0.92rem; margin-bottom: 6px; }
+.event-content p i { color: var(--gold-500); width: 16px; margin-right: 6px; }
+
+/* ===== CONTACT ===== */
+.contact-section {
+  background:
+    radial-gradient(circle at 80% 10%, rgba(79,164,104,0.15), transparent 45%),
+    linear-gradient(135deg, var(--green-900) 0%, var(--green-700) 100%);
+  color: var(--white);
+}
+.contact-info {
+  padding: 40px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-lg);
+  height: 100%;
+}
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+.contact-item:last-child { margin-bottom: 0; }
+.contact-icon {
+  width: 52px; height: 52px;
+  background: linear-gradient(135deg, var(--gold-500), var(--gold-400));
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--green-900);
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  box-shadow: 0 8px 20px rgba(212,162,76,0.3);
+}
+.contact-text h5 {
+  color: var(--gold-400);
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.contact-text p {
+  margin: 0;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.contact-map {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  height: 100%;
+  min-height: 460px;
+  border: 1px solid rgba(255,255,255,0.12);
+  position: relative;
+}
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 460px;
+  border: 0;
+  display: block;
+  filter: saturate(0.95) contrast(1.02);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--green-900);
+  color: rgba(255,255,255,0.7);
+  padding-top: 80px;
+  position: relative;
+}
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,162,76,0.4), transparent);
+}
+.footer-widget { margin-bottom: 34px; }
+.footer-widget h5 {
+  color: var(--white);
+  margin-bottom: 24px;
+  font-size: 1.05rem;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding-bottom: 12px;
+}
+.footer-widget h5::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 36px; height: 2px;
+  background: var(--gold-500);
+  border-radius: 2px;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.footer-brand img {
+  max-height: 50px;
+  border-radius: 10px;
+  background: var(--white);
+  padding: 4px;
+}
+.footer-widget p { font-size: 0.92rem; line-height: 1.7; margin-bottom: 14px; }
+.footer-links { list-style: none; padding: 0; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.92rem;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.footer-links a i {
+  font-size: 0.65rem;
+  color: var(--gold-500);
+  transition: var(--transition);
+}
+.footer-links a:hover { color: var(--gold-400); transform: translateX(4px); }
+.newsletter-form {
+  display: flex;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-pill);
+  padding: 5px;
+  margin-top: 16px;
+}
+.newsletter-form input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--white);
+  padding: 10px 18px;
+  font-size: 0.9rem;
+  outline: none;
+  min-width: 0;
+}
+.newsletter-form input::placeholder { color: rgba(255,255,255,0.45); }
+.newsletter-form button {
+  background: var(--gold-500);
+  color: var(--green-900);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 10px 22px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.newsletter-form button:hover { background: var(--gold-400); }
+
+.sub-footer {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 26px 0;
+  margin-top: 40px;
+  text-align: center;
+  font-size: 0.88rem;
+}
+.sub-footer a { color: var(--gold-400); font-weight: 600; }
+.sub-footer a:hover { color: var(--gold-300); }
+
+/* ===== SCROLL UP ===== */
+.scrollup {
+  position: fixed;
+  bottom: 30px; right: 30px;
+  background: var(--gold-500);
+  color: var(--green-900);
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  transition: var(--transition);
+  z-index: 1000;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+}
+.scrollup.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.scrollup:hover {
+  background: var(--gold-400);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ===== ANIMATIONS ===== */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+.animate-on-scroll.animated { opacity: 1; transform: translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-card:nth-child(1)::after,
+  .stat-card:nth-child(2)::after {
+    content: '';
+    position: absolute;
+    left: 10%; right: 10%; bottom: 0;
+    top: auto;
+    width: auto; height: 1px;
+    background: rgba(15,36,23,0.08);
+  }
+  .stat-card:nth-child(2)::after { display: none; }
+}
+
+@media (max-width: 992px) {
+  .nav-menu {
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: var(--shadow-lg);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    display: none;
+    border-top: 1px solid rgba(15,36,23,0.06);
+  }
+  .nav-menu.active { display: block; }
+  .nav-menu ul { flex-direction: column; gap: 4px; align-items: stretch; }
+  .nav-menu ul li a {
+    display: block;
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+  }
+  .nav-cta { margin-left: 0; text-align: center; }
+  .mobile-menu-btn { display: flex; margin-left: auto; }
+  .main-header .row { align-items: center; }
+  .about-image { margin-top: 40px; }
+  .about-image .badge-float { bottom: -16px; left: 16px; }
+}
+
+@media (max-width: 768px) {
+  .section-pad { padding: 70px 0; }
+  .carousel-item { height: 78vh; min-height: 520px; }
+  .carousel-caption { left: 6%; right: 6%; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .hero-actions .btn-theme { width: 100%; justify-content: center; }
+  .stats-section { margin-top: -50px; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-card::after { display: none !important; }
+  .stat-card { border-bottom: 1px solid rgba(15,36,23,0.06); }
+  .stat-card:last-child { border-bottom: none; }
+  .event-card { flex-direction: column; }
+  .event-date {
+    flex-direction: row;
+    min-width: auto;
+    padding: 16px 20px;
+    gap: 10px;
+    justify-content: center;
+  }
+  .event-date .day { font-size: 1.6rem; }
+  .event-date .month { margin-top: 0; }
+  .contact-info { padding: 28px; }
+  .contact-map, .contact-map iframe { min-height: 340px; }
+  .top-bar .container { justify-content: center; }
+  .top-bar .top-contact { justify-content: center; gap: 14px; }
+  .news-ticker::before { margin-left: 12px; }
+}
+
+@media (max-width: 480px) {
+  .carousel-caption h2 { font-size: 1.8rem; }
+  .logo img { max-height: 50px; }
+  .section-title h2 { font-size: 1.6rem; }
+  .scrollup { bottom: 20px; right: 20px; width: 44px; height: 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div id="wrapper">
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-contact">
+        <a href="tel:+22507891128"><i class="fas fa-phone-alt"></i> +225 07 00 96 48 40</a>
+        <a href="mailto:info@scinpa.ci"><i class="fas fa-envelope"></i> info@singa.ci</a>
+        <span class="d-none d-md-inline"><i class="fas fa-map-marker-alt"></i> Man, Côte d'Ivoire</span>
+      </div>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com/SCINPA2" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/singa-coop-ca-7283662a5/?isSelfProfile=false" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header -->
+  <header class="main-header" id="mainHeader">
+    <div class="container">
+      <div class="row align-items-center g-0">
+        <div class="col-6 col-lg-3">
+          <a href="#" class="logo" data-page="home" aria-label="SCINPA - Accueil">
+            <img src="images.jpg" alt="SINGA">
+          </a>
+        </div>
+        <div class="col-6 col-lg-9">
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Ouvrir le menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+          </button>
+          <nav class="nav-menu" id="navMenu" aria-label="Navigation principale">
+            <ul>
+              <li><a href="#" data-page="home" class="active">Accueil</a></li>
+              <li><a href="#" data-page="about">Notre Coopérative</a></li>
+              <li><a href="#" data-page="products">Nos Produits</a></li>
+              <li><a href="#" data-page="social">Actions Sociales</a></li>
+              <li><a href="#" data-page="partners">Partenaires</a></li>
+              <li><a href="#" data-page="events">Évènements</a></li>
+              <li><a href="#" data-page="contact" class="nav-cta">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ PAGE : ACCUEIL ============ -->
+  <main id="page-home" class="page active">
+
+    <!-- News Ticker -->
+    <div class="news-ticker" role="marquee" aria-label="Actualités">
+      <div class="ticker-content">
+        <i class="fas fa-newspaper"></i>
+        SOCIÉTÉ COOPÉRATIVE IVOIRIENNE DE NÉGOCE DES PRODUITS AGRICOLES &nbsp;•&nbsp; 3 426 membres exploitant 10 572 ha &nbsp;•&nbsp; 5 200 tonnes de cacao produites en 2020 &nbsp;•&nbsp; Lauréat du Prix Africain de Développement 2019
+      </div>
+    </div>
+
+    <!-- Hero Carousel -->
+    <section class="hero-carousel" aria-label="Présentation SCINPA">
+      <div id="mainCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1920&q=80');">
+            <div class="carousel-caption">
+              <span class="eyebrow animate__animated animate__fadeInUp"><i class="fas fa-seedling"></i> Coopérative de renom</span>
+              <h2 class="animate__animated animate__fadeInUp animate__delay-1s">3 426 membres,<br>une <span>force collective</span></h2>
+              <p class="animate__animated animate__fadeInUp animate__delay-2s">Exploitant 10 572 hectares de cacao et café de qualité supérieure, au cœur de la Côte d'Ivoire.</p>
+              <div class="hero-actions animate__animated animate__fadeInUp animate__delay-3s">
+                <a href="#" class="btn-theme" data-page="about">Découvrir la coopérative <i class="fas fa-arrow-right"></i></a>
+                <a href="#" class="btn-theme btn-outline" data-page="contact">Nous contacter</a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=1920&q=80');">
+            <div class="carousel-caption">
+              <span class="eyebrow"><i class="fas fa-award"></i> Excellence agricole</span>
+              <h2>5 200 tonnes<br>de <span>cacao d'exception</span></h2>
+              <p>Une production reconnue internationalement pour sa qualité, sa traçabilité et son engagement durable.</p>
+              <div class="hero-actions">
+                <a href="#" class="btn-theme" data-page="products">Nos produits <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1920&q=80');">
+            <div class="carousel-caption">
+              <span class="eyebrow"><i class="fas fa-hand-holding-heart"></i> Impact social</span>
+              <h2>Une coopérative<br><span>engagée</span> pour les communautés</h2>
+              <p>Éducation, santé, accès à l'eau potable : nous investissons dans le développement durable des territoires.</p>
+              <div class="hero-actions">
+                <a href="#" class="btn-theme" data-page="social">Nos actions <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1532629345422-94b3f6ad583b?w=1920&q=80');">
+            <div class="carousel-caption">
+              <span class="eyebrow"><i class="fas fa-trophy"></i> Distinction internationale</span>
+              <h2>Lauréat du <span>Prix Africain</span><br>de Développement 2019</h2>
+              <p>Une reconnaissance internationale qui couronne notre excellence opérationnelle et notre impact positif.</p>
+              <div class="hero-actions">
+                <a href="#" class="btn-theme" data-page="events">Voir les distinctions <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Précédent</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Suivant</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" aria-label="Chiffres clés">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card animate-on-scroll">
+            <div class="stat-icon"><i class="fas fa-users"></i></div>
+            <div class="stat-number">3 426</div>
+            <div class="stat-label">Membres actifs</div>
+          </div>
+          <div class="stat-card animate-on-scroll">
+            <div class="stat-icon"><i class="fas fa-tree"></i></div>
+            <div class="stat-number">10 572</div>
+            <div class="stat-label">Hectares cultivés</div>
+          </div>
+          <div class="stat-card animate-on-scroll">
+            <div class="stat-icon"><i class="fas fa-seedling"></i></div>
+            <div class="stat-number">5 200</div>
+            <div class="stat-label">Tonnes de cacao (2020)</div>
+          </div>
+          <div class="stat-card animate-on-scroll">
+            <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+            <div class="stat-number">2019</div>
+            <div class="stat-label">Prix Africain de Développement</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ PAGE : NOTRE COOPÉRATIVE ============ -->
+  <main id="page-about" class="page">
+    <section class="about-section section-pad">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">Notre histoire</span>
+          <h2>Une coopérative de référence</h2>
+          <div class="title-divider"></div>
+          <p>Une histoire de passion, d'engagement et d'excellence au service de l'agriculture ivoirienne.</p>
+        </div>
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <div class="about-content animate-on-scroll">
+              <h3>SINGA — Société Coopérative Ivoirienne de Négoce des Produits Agricoles</h3>
+              <p>Créée pour fédérer les producteurs de cacao et de café de la région, SCINPA est aujourd'hui une référence dans le secteur agricole ivoirien. Notre mission : valoriser le travail des producteurs et garantir une commercialisation équitable et transparente.</p>
+              <ul class="feature-list">
+                <li><i class="fas fa-check"></i> 3 426 producteurs membres engagés</li>
+                <li><i class="fas fa-check"></i> Plus de 10 000 hectares de plantations certifiées</li>
+                <li><i class="fas fa-check"></i> Exportation vers l'Europe et l'Asie</li>
+                <li><i class="fas fa-check"></i> Certification commerce équitable</li>
+                <li><i class="fas fa-check"></i> Programmes de formation continue</li>
+              </ul>
+              <a href="#" class="btn-theme" data-page="contact">En savoir plus <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="about-image animate-on-scroll">
+              <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?w=900&q=80" alt="Producteurs de la coopérative SCINPA">
+              <div class="badge-float">
+                <i class="fas fa-medal"></i>
+                <div>
+                  <strong>2019</strong>
+                  <small>Prix Africain de Développement</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ PAGE : NOS PRODUITS ============ -->
+  <main id="page-products" class="page">
+    <section class="products-section section-pad">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">Nos produits</span>
+          <h2>Des produits d'exception</h2>
+          <div class="title-divider"></div>
+          <p>Des produits agricoles de qualité supérieure, cultivés avec passion et exportés dans le monde entier.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <article class="product-card animate-on-scroll">
+              <div class="product-image">
+                <span class="product-tag">Certifié</span>
+                <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=900&q=80" alt="Fèves de cacao de qualité">
+              </div>
+              <div class="product-content">
+                <h3>Cacao de Qualité</h3>
+                <p>Notre cacao est cultivé dans les meilleures conditions, garantissant des fèves d'exception aux arômes riches et complexes. Certifié commerce équitable et traçabilité garantie.</p>
+                <a href="#" class="btn-theme" data-page="contact">Découvrir le cacao</a>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-6">
+            <article class="product-card animate-on-scroll">
+              <div class="product-image">
+                <span class="product-tag">Arabica</span>
+                <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=900&q=80" alt="Café Arabica de qualité">
+              </div>
+              <div class="product-content">
+                <h3>Café d'Arabica</h3>
+                <p>Nos caféiers produisent des grains d'exception, récoltés à maturité et traités avec soin pour révéler toute leur richesse aromatique. Un café aux notes fruitées et florales.</p>
+                <a href="#" class="btn-theme" data-page="contact">Découvrir le café</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ PAGE : ACTIONS SOCIALES ============ -->
+  <main id="page-social" class="page">
+    <section class="social-section section-pad">
+      <div class="container">
+        <div class="section-title text-white">
+          <span class="eyebrow" style="color: var(--gold-400);">Impact social</span>
+          <h2>Nos actions sociales</h2>
+          <div class="title-divider"></div>
+          <p>Engagés pour le développement durable des communautés qui nous font confiance.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="social-card animate-on-scroll">
+              <div class="social-icon"><i class="fas fa-graduation-cap"></i></div>
+              <h4>Éducation</h4>
+              <p>Construction d'écoles, bourses d'études et fournitures scolaires pour les enfants des producteurs.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="social-card animate-on-scroll">
+              <div class="social-icon"><i class="fas fa-heartbeat"></i></div>
+              <h4>Santé</h4>
+              <p>Centres de santé mobiles, campagnes de vaccination et sensibilisation aux bonnes pratiques.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="social-card animate-on-scroll">
+              <div class="social-icon"><i class="fas fa-hand-holding-heart"></i></div>
+              <h4>Autres initiatives</h4>
+              <p>Accès à l'eau potable, microcrédit, formation agricole et autonomisation des femmes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ PAGE : PARTENAIRES ============ -->
+  <main id="page-partners" class="page">
+    <section class="partners-section section-pad">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">Nos partenaires</span>
+          <h2>Ils nous font confiance</h2>
+          <div class="title-divider"></div>
+          <p>Des collaborations solides pour un développement durable et une croissance partagée.</p>
+        </div>
+        <div class="row g-4 align-items-center justify-content-center">
+          <div class="col-md-3 col-sm-6">
+            <div class="partner-logo animate-on-scroll">
+              <img src="https://via.placeholder.com/200x100/14301E/D4A24C?text=Conseil+Café-Cacao" alt="Conseil Café-Cacao">
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="partner-logo animate-on-scroll">
+              <img src="https://via.placeholder.com/200x100/14301E/D4A24C?text=Fairtrade" alt="Fairtrade">
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="partner-logo animate-on-scroll">
+              <img src="https://via.placeholder.com/200x100/14301E/D4A24C?text=Union+Européenne" alt="Union Européenne">
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="partner-logo animate-on-scroll">
+              <img src="https://via.placeholder.com/200x100/14301E/D4A24C?text=AFD" alt="AFD">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ PAGE : ÉVÈNEMENTS ============ -->
+  <main id="page-events" class="page">
+    <section class="events-section section-pad">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">Agenda</span>
+          <h2>Évènements à venir</h2>
+          <div class="title-divider"></div>
+          <p>Ne manquez pas nos prochains rendez-vous et temps forts de la coopérative.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="event-card animate-on-scroll">
+              <div class="event-date">
+                <span class="day">15</span>
+                <span class="month">Mars</span>
+                <span class="year">2024</span>
+              </div>
+              <div class="event-content">
+                <h4>Assemblée Générale Annuelle</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Siège social, Agboville</p>
+                <p>Présentation des résultats de la campagne 2023-2024 et élection du nouveau bureau.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="event-card animate-on-scroll">
+              <div class="event-date">
+                <span class="day">22</span>
+                <span class="month">Avril</span>
+                <span class="year">2024</span>
+              </div>
+              <div class="event-content">
+                <h4>Formation Agriculture Durable</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Centre de formation, Man</p>
+                <p>Atelier sur les techniques agroécologiques et la certification biologique.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="event-card animate-on-scroll">
+              <div class="event-date">
+                <span class="day">05</span>
+                <span class="month">Juin</span>
+                <span class="year">2024</span>
+              </div>
+              <div class="event-content">
+                <h4>Salon International du Cacao</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Abidjan, Côte d'Ivoire</p>
+                <p>Participation de SINGA au plus grand salon du cacao en Afrique.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="event-card animate-on-scroll">
+              <div class="event-date">
+                <span class="day">12</span>
+                <span class="month">Juillet</span>
+                <span class="year">2024</span>
+              </div>
+              <div class="event-content">
+                <h4>Journée Portes Ouvertes</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Plantations pilotes, Divo</p>
+                <p>Visite des plantations et échanges avec les producteurs.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ PAGE : CONTACT ============ -->
+  <main id="page-contact" class="page">
+    <section class="contact-section section-pad">
+      <div class="container">
+        <div class="section-title text-white">
+          <span class="eyebrow" style="color: var(--gold-400);">Contact</span>
+          <h2>Contactez-nous</h2>
+          <div class="title-divider"></div>
+          <p>Notre équipe est à votre écoute pour toute demande d'information ou de partenariat.</p>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-5">
+            <div class="contact-info animate-on-scroll">
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="contact-text">
+                  <h5>Adresse</h5>
+                  <p>Siège social, en face de la Radio RVA<br>Quartier Commerce, Agboville, Côte d'Ivoire</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                <div class="contact-text">
+                  <h5>Téléphone</h5>
+                  <p>+225 07 89 11 28<br>+225 09 80 05 82<br>+225 47 40 26 82</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <div class="contact-text">
+                  <h5>Email</h5>
+                  <p>info@scinpa.ci<br>commercial@scinpa.ci</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                <div class="contact-text">
+                  <h5>Horaires</h5>
+                  <p>Lundi - Vendredi : 08h00 - 17h00<br>Samedi : 08h00 - 12h00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="contact-map animate-on-scroll">
+              <iframe
+                src="https://www.google.com/maps?q=Agboville,+C%C3%B4te+d'Ivoire&output=embed"
+                title="Localisation SCINPA - Agboville, Côte d'Ivoire"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER (commun à toutes les pages) ============ -->
+  <footer>
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-widget">
+            <div class="footer-brand">
+             
+<img src="images.jpg" alt="SCINPA">
+              <h5 style="margin:0; padding:0;">SINGA</h5>
+            </div>
+            <p>La Société Coopérative Coop-CA SINGA est une coopérative agricole ivoirienne basée à Man (dans la région des Montagnes), spécialisée principalement dans la collecte et la production de cacao et de café.</p>
+            <div class="social-icons">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://twitter.com/SCINPA2" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.linkedin.com/in/singa-coop-ca-7283662a5/?isSelfProfile=false" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6">
+          <div class="footer-widget">
+            <h5>Navigation</h5>
+            <ul class="footer-links">
+              <li><a href="#" data-page="home"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+              <li><a href="#" data-page="about"><i class="fas fa-chevron-right"></i> Coopérative</a></li>
+              <li><a href="#" data-page="products"><i class="fas fa-chevron-right"></i> Produits</a></li>
+              <li><a href="#" data-page="social"><i class="fas fa-chevron-right"></i> Actions sociales</a></li>
+              <li><a href="#" data-page="events"><i class="fas fa-chevron-right"></i> Évènements</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6">
+          <div class="footer-widget">
+            <h5>Liens utiles</h5>
+            <ul class="footer-links">
+              <li><a href="#"><i class="fas fa-chevron-right"></i> Conseil Café-Cacao</a></li>
+              <li><a href="#"><i class="fas fa-chevron-right"></i> Conditions générales</a></li>
+              <li><a href="#"><i class="fas fa-chevron-right"></i> Confidentialité</a></li>
+              <li><a href="#"><i class="fas fa-chevron-right"></i> Carrières</a></li>
+              <li><a href="#"><i class="fas fa-chevron-right"></i> Forum SCINPA</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-widget">
+            <h5>Newsletter</h5>
+            <p>Recevez nos actualités, résultats de campagne et initiatives sociales.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); this.reset(); alert('Merci pour votre inscription !');">
+              <input type="email" placeholder="Votre adresse email" required aria-label="Adresse email">
+              <button type="submit">S'inscrire</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sub-footer">
+      <div class="container">
+        <p>&copy; 2026 SINGA — Tous droits réservés. Conçu par <a href="#">BLUE GOLD SARL</a></p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<a href="#" class="scrollup" id="scrollUp" aria-label="Retour en haut"><i class="fas fa-chevron-up"></i></a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ===== SYSTÈME DE NAVIGATION PAR PAGES =====
+const pages = document.querySelectorAll('.page');
+const navLinks = document.querySelectorAll('.nav-menu ul li a');
+const triggerLinks = document.querySelectorAll('[data-page]');
+
+function showPage(pageId, pushState = true) {
+  // Masquer toutes les pages
+  pages.forEach(p => p.classList.remove('active'));
+
+  // Afficher la page demandée
+  const targetPage = document.getElementById('page-' + pageId);
+  if (targetPage) {
+    targetPage.classList.add('active');
+  } else {
+    // Si la page n'existe pas, retomber sur home
+    document.getElementById('page-home').classList.add('active');
+    pageId = 'home';
+  }
+
+  // Mettre à jour l'état actif du menu principal
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('data-page') === pageId) {
+      link.classList.add('active');
+    }
+  });
+
+  // Remonter en haut de page
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Mettre à jour l'URL (hash) sans recharger
+  if (pushState) {
+    history.pushState({ page: pageId }, '', '#' + pageId);
+  }
+
+  // Relancer les animations d'apparition sur la nouvelle page
+  setTimeout(animateOnScroll, 50);
+}
+
+// Intercepter les clics sur tous les liens ayant data-page
+triggerLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const pageId = link.getAttribute('data-page');
+    showPage(pageId);
+    closeMobileMenu();
+  });
+});
+
+// Gérer le bouton précédent/suivant du navigateur
+window.addEventListener('popstate', (e) => {
+  if (e.state && e.state.page) {
+    showPage(e.state.page, false);
+  } else {
+    // Lire le hash de l'URL
+    const hash = window.location.hash.replace('#', '');
+    showPage(hash || 'home', false);
+  }
+});
+
+// Au chargement : lire le hash de l'URL pour afficher la bonne page
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash.replace('#', '');
+  if (hash) {
+    showPage(hash, false);
+  } else {
+    showPage('home', false);
+  }
+});
+
+// ===== Mobile menu =====
+const mobileBtn = document.getElementById('mobileMenuBtn');
+const navMenu = document.getElementById('navMenu');
+
+function closeMobileMenu() {
+  if (navMenu.classList.contains('active')) {
+    navMenu.classList.remove('active');
+    mobileBtn.setAttribute('aria-expanded', 'false');
+    mobileBtn.innerHTML = '<i class="fas fa-bars"></i>';
+  }
+}
+
+if (mobileBtn && navMenu) {
+  mobileBtn.addEventListener('click', () => {
+    const isOpen = navMenu.classList.toggle('active');
+    mobileBtn.setAttribute('aria-expanded', isOpen);
+    mobileBtn.innerHTML = isOpen ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+  });
+}
+
+// ===== Header scroll effect =====
+const header = document.getElementById('mainHeader');
+const scrollUpBtn = document.getElementById('scrollUp');
+
+const onScroll = () => {
+  if (window.scrollY > 40) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+
+  if (window.scrollY > 400) {
+    scrollUpBtn.classList.add('visible');
+  } else {
+    scrollUpBtn.classList.remove('visible');
+  }
+};
+
+window.addEventListener('scroll', onScroll, { passive: true });
+
+// ===== Scroll to top =====
+scrollUpBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ===== Animations au scroll =====
+function animateOnScroll() {
+  const elements = document.querySelectorAll('.page.active .animate-on-scroll');
+  elements.forEach(element => {
+    const elementPosition = element.getBoundingClientRect().top;
+    const screenPosition = window.innerHeight / 1.15;
+    if (elementPosition < screenPosition) {
+      element.classList.add('animated');
+    }
+  });
+}
+
+window.addEventListener('load', animateOnScroll);
+window.addEventListener('scroll', animateOnScroll, { passive: true });
+</script>
+</body>
+</html>
